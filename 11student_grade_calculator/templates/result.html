@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Grade{% endblock %}
+
+{% block content %}
+<h1>Grade Result</h1>
+<p>Your numeric score: <strong>{{ "%.2f"|format(score) }}</strong></p>
+
+<p>Your letter grade: 
+    {% if letter_grade == 'A' %}
+        <span class="grade grade-a">A - Excellent</span>
+    {% elif letter_grade == 'B' %}
+        <span class="grade grade-b">B - Good</span>
+    {% elif letter_grade == 'C' %}
+        <span class="grade grade-c">C - Average</span>
+    {% elif letter_grade == 'D' %}
+        <span class="grade grade-d">D - Below Average</span>
+    {% else %}
+        <span class="grade grade-f">F - Fail</span>
+    {% endif %}
+</p>
+
+<a href="{{ url_for('home') }}" class="btn back-btn">Calculate Another Grade</a>
+{% endblock %}
